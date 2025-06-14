@@ -1,5 +1,32 @@
 # Welcome to your Expo app 👋
 
+Tutango: Product Design Assignment
+
+Problem Statement
+
+In today's digital age, learners & hobbyists are overwhelmed by the process of finding a tutor who fits their unique needs, while talented tutors struggle to effectively showcase their expertise. Tutango is a mobile-first platform designed to make this matchmaking process engaging, efficient, and fun. Your challenge is to design the key screens and flows that enable learners to discover and connect with the ideal tutor-and for tutors to present themselves in the best possible light.
+
+Designed an engaging iOS app experience for Tutango by focusing on the core user journeys and the screens required to facilitate these flows. Explain your design decisions and the reasoning behind each screen and flow.
+
+Learner Journey:
+
+How does a learner discover, evaluate, and select a tutor?
+
+Tutor Journey:
+
+How can a tutor present their profile, highlight their teaching methods, and attract the right learners?
+
+Evaluation Criteria
+
+Clarity & Usability: Are the screens intuitive and easy to navigate?
+
+Flow Efficiency: Do the user flows minimize friction and clearly guide users towards their goals?
+
+Design Rationale: Is there clear reasoning behind each design decision, demonstrating a deep understanding of user needs?
+
+Visual Appeal: Is the interface visually engaging, modern, and consistent with the fun nature of Tutango?
+
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Get started
