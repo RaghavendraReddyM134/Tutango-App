@@ -1,35 +1,8 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useContext, useState } from 'react';
-import { AppContext } from '../context/AppContext';
-
-
-export default function LoginScreen({ navigation }) {
-  const { setIsLoggedIn, role } = useContext(AppContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    if (role === 'learner') navigation.navigate('LearnerDashboard');
-    else navigation.navigate('TutorDashboard');
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tutango Login</Text>
-      <TextInput placeholder="Email" style={styles.input} value={email} onChangeText={setEmail} />
-      <TextInput placeholder="Password" secureTextEntry style={styles.input} value={password} onChangeText={setPassword} />
-      <Button title="Login" onPress={handleLogin} />
-      <Text style={styles.link} onPress={() => navigation.navigate('Signup')}>
-        Don't have an account? Sign Up
-      </Text>
-    </View>
-  );
+on
+{
+  "bugFound": "The bug is that the application is not checking the email and password before navigating to the dashboard, which means anyone can access the dashboard without a valid login.",
+  "explanation": "The issue arises because the handleLogin function does not validate the email and password before setting the isLoggedIn state to true and navigating to the dashboard. This is a significant security flaw as it allows unauthorized access to the application. To fix this, we need to add a validation check for the email and password before allowing the user to log in.",
+  "changes": ["Added email and password validation in the handleLogin function", "Added a check to ensure email and password are not empty before navigating to the dashboard"],
+  "fixedCode": "import { Button, StyleSheet, Text, TextInput, View, Alert } from 'react-native';\nimport { useContext, useState } from 'react';\nimport { AppContext } from '../context/AppContext';\n\nexport default function LoginScreen({ navigation }) {\n  const { setIsLoggedIn, role } = useContext(AppContext);\n  const [email, setEmail] = useState('');\n  const [password, setPassword] = useState('');\n\n  const handleLogin = () => {\n    if (email === '' || password === '') {\n      Alert.alert('Error', 'Please enter both email and password');\n      return;\n    }\n    // Add your actual login logic here, for example, API call to authenticate user\n    // For now, just set isLoggedIn to true for demonstration purposes\n    setIsLoggedIn(true);\n    if (role === 'learner') navigation.navigate('LearnerDashboard');\n    else navigation.navigate('TutorDashboard');\n  };\n\n  return (\n    <View style={styles.container}>\n      <Text style={styles.title}>Tutango Login</Text>\n      <TextInput placeholder=\"Email\" style={styles.input} value={email} onChangeText={setEmail} />\n      <TextInput placeholder=\"Password\" secureTextEntry style={styles.input} value={password} onChangeText={setPassword} />\n      <Button title=\"Login\" onPress={handleLogin} />\n      <Text style={styles.link} onPress={() => navigation.navigate('Signup')}>Don't have an account? Sign Up</Text>\n    </View>\n  );\n}\n\nconst styles = StyleSheet.create({\n  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },\n  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },\n  input: { width: '100%', padding: 10, marginVertical: 10, borderWidth: 1, borderRadius: 5 },\n  link: { marginTop: 15, color: 'blue' },\n});",
+  "testSuggestion": "Test the fix by attempting to log in with an empty email or password field, and verify that an error alert is displayed."
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
-  input: { width: '100%', padding: 10, marginVertical: 10, borderWidth: 1, borderRadius: 5 },
-  link: { marginTop: 15, color: 'blue' },
-});
